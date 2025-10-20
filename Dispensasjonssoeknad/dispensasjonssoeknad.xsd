@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://skjema.ft.dibk.no/dispensasjonssoeknad/v1" targetNamespace="https://skjema.ft.dibk.no/dispensasjonssoeknad/v1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="dispensasjonssoeknad" type="DispensasjonssoeknadType"/>
+	<xs:complexType name="DispensasjonssoeknadType">
+		<xs:all>
+			<xs:element name="soeknadstype" type="KodeType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="dispensasjonReferanse" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="tiltakstyper" type="TiltakstyperType" nillable="true" minOccurs="0"/>
+			<xs:element name="dispensasjonBeskrivelse" type="DispensasjonBeskrivelseType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="dispensasjonFra" type="DispensasjonFraType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="stedfesting" type="StedfestingType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="varighet" type="VarighetType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="begrunnelse" type="BegrunnelseType" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+		<xs:attribute name="dataFormatProvider" type="xs:string" use="required" fixed="DIBK"/>
+		<xs:attribute name="dataFormatId" type="xs:string" use="required" fixed="10007"/>
+		<xs:attribute name="dataFormatVersion" type="xs:string" use="required" fixed="1"/>
+	</xs:complexType>
+	
+	<xs:complexType name="KodeListe">
+		<xs:sequence>
+			<xs:element name="kode" type="KodeType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="KodeType">
+		<xs:all>
+			<xs:element name="kodeverdi" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="kodebeskrivelse" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="TiltakstyperType">
+		<xs:all>
+			<xs:element name="type" type="KodeListe" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+	
+	<xs:complexType name="DispensasjonBeskrivelseType">
+		<xs:all>
+			<xs:element name="dispensasjonTittel" type="KodeType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="inngangsbeskrivelse" type="KodeType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="annenInngangsbeskrivelse" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="beskrivelse" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="DispensasjonFraType">
+		<xs:all>
+			<xs:element name="bestemmelserType" type="KodeType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="dispensasjonPlanBestemmelse" type="DispensasjonPlanBestemmelseType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="lovbestemmelse" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="DispensasjonPlanBestemmelseType">
+		<xs:all>
+			<xs:element name="navn" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="nasjonalArealplanId" type="NasjonalArealplanIdType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="planbestemmelse" type="PlanbestemmelseType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="gradAvUtnytting" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="beregningsregelGradAvUtnytting" type="KodeType" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="NasjonalArealplanIdType">
+		<xs:all>
+			<xs:element name="administrativEnhet" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="planidentifikasjon" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="PlanbestemmelseType">
+		<xs:all>
+			<xs:element name="nummerering" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="overskrift" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="bestemmelsestekst" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="StedfestingType">
+		<xs:all>
+			<xs:element name="posisjon" type="PosisjonType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="vertikalnivaa" type="KodeType" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="PosisjonType">
+		<xs:all>
+			<xs:element name="type" type="KodeType" nillable="true" minOccurs="0"/>
+			<xs:element name="koordinatsystem" type="KodeType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="koordinater" type="KoordinatType" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="KoordinatType">
+		<xs:sequence>
+			<xs:element name="koordinat" type="xs:double" minOccurs="2" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="VarighetType">
+		<xs:all>
+			<xs:element name="oenskesVarigDispensasjon" type="xs:boolean" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="oensketVarighetTil" type="xs:date" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="BegrunnelseType">
+		<xs:all>
+			<xs:element name="hensynBakBestemmelsen" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="vurderingHensynBakBestemmelsen" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="vurderingHensynOverordnet" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="fordeler" type="FordelerListe" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ulemper" type="UlemperListe" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="samletBegrunnelse" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="FordelerListe">
+		<xs:sequence>
+			<xs:element name="effekt" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UlemperListe">
+		<xs:sequence>
+			<xs:element name="effekt" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

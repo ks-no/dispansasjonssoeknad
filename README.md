@@ -1,1 +1,16 @@
-# dispansasjonssoeknad
+# Dispansasjonssoeknad - generert kode
+
+### Demo av generert kode fra dispensasjonssoeknad.xsd
+
+Vi tester her ut generering av C# kode fra xsd-filen dispensasjonssoeknad.xsd.
+
+Generering er gjort på OSX vha dotnet xscgen tool.
+
+Vi kjørte kommandoen: 
+
+```
+xscgen dispensasjonssoeknad.xsd -c -o GeneratedClasses
+```
+
+#### Generert kode
+C# kodefilen `No.Dibk.Ft.Skjema.Dispensasjonssoeknad.V1.cs` som er generert ligger i mappen _Dispensasjonssoeknad/GeneratedClasses_
