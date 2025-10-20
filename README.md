@@ -1,6 +1,6 @@
 # Dispansasjonssoeknad - generert kode
 
-### Demo av generert kode fra dispensasjonssoeknad.xsd
+### Demo av generert kode fra [dispensasjonssoeknad.xsd](https://skjema.ft.dibk.no/dispensasjonssoeknad/v1/dispensasjonssoeknad.xsd)
 
 Vi tester her ut generering av C# kode fra xsd-filen dispensasjonssoeknad.xsd.
 
