@@ -2,6 +2,8 @@
 
 ### Demo av generert kode fra [dispensasjonssoeknad.xsd](https://skjema.ft.dibk.no/dispensasjonssoeknad/v1/dispensasjonssoeknad.xsd)
 
+XSD fil fra DiBK: https://skjema.ft.dibk.no/
+
 Vi tester her ut generering av C# kode fra xsd-filen dispensasjonssoeknad.xsd.
 
 Generering er gjort på OSX vha dotnet xscgen tool.
